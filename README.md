@@ -65,12 +65,12 @@
 ### Swagger Documentation Interface
 *Beautiful, interactive API documentation*
 
-![Swagger UI](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=Swagger+UI+Screenshot)
+![Swagger UI](image/swagger.png)
 
 ### API Response Example
 *Clean, structured JSON responses*
 
-![API Response](https://via.placeholder.com/800x300/2d3748/ffffff?text=JSON+Response+Example)
+![API Response](image/response.png)
 
 </div>
 
@@ -101,7 +101,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/mangaku-api.git
+git clone https://github.com/badruzbby/mangaku-api.git
 cd mangaku-api
 
 # Create virtual environment
