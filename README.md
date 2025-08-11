@@ -8,8 +8,8 @@
 [![Flask](https://img.shields.io/badge/Flask-3.1.1-green.svg)](https://flask.palletsprojects.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Swagger](https://img.shields.io/badge/API-Swagger-brightgreen.svg)](http://localhost:5000/docs/)
-[![Stars](https://img.shields.io/github/stars/yourusername/mangaku-api?style=social)](https://github.com/yourusername/mangaku-api/stargazers)
-[![Forks](https://img.shields.io/github/forks/yourusername/mangaku-api?style=social)](https://github.com/yourusername/mangaku-api/network/members)
+[![Stars](https://img.shields.io/github/stars/badruzbby/mangaku-api?style=social)](https://github.com/badruzbby/mangaku-api/stargazers)
+[![Forks](https://img.shields.io/github/forks/badruzbby/mangaku-api?style=social)](https://github.com/badruzbby/mangaku-api/network/members)
 
 *A powerful, fast, and reliable REST API for scraping manga data from Mangaaku.com with beautiful Swagger documentation*
 
@@ -330,13 +330,13 @@ We ❤️ contributions! Here's how you can help make Mangaku API even better:
 
 <div align="center">
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=dark)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=badruzbby&show_icons=true&theme=dark)
 
 ### **Project Metrics**
-[![GitHub issues](https://img.shields.io/github/issues/yourusername/mangaku-api)](https://github.com/yourusername/mangaku-api/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/yourusername/mangaku-api)](https://github.com/yourusername/mangaku-api/pulls)
-[![GitHub contributors](https://img.shields.io/github/contributors/yourusername/mangaku-api)](https://github.com/yourusername/mangaku-api/graphs/contributors)
-[![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/mangaku-api)](https://github.com/yourusername/mangaku-api/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/badruzbby/mangaku-api)](https://github.com/badruzbby/mangaku-api/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/badruzbby/mangaku-api)](https://github.com/badruzbby/mangaku-api/pulls)
+[![GitHub contributors](https://img.shields.io/github/contributors/badruzbby/mangaku-api)](https://github.com/badruzbby/mangaku-api/graphs/contributors)
+[![GitHub last commit](https://img.shields.io/github/last-commit/badruzbby/mangaku-api)](https://github.com/badruzbby/mangaku-api/commits/main)
 
 </div>
 
@@ -356,15 +356,6 @@ We ❤️ contributions! Here's how you can help make Mangaku API even better:
 - Fast JSON serialization
 - Optimized database queries
 
-### **🧪 Testing**
-```bash
-# Run tests
-python -m pytest tests/
-
-# Coverage report
-python -m pytest --cov=scraper tests/
-```
-
 ---
 
 ## 💬 **Support & Community**
@@ -381,8 +372,8 @@ python -m pytest --cov=scraper tests/
 
 ### **📞 Support Channels**
 
-- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/yourusername/mangaku-api/issues)
-- 💡 **Feature Requests:** [GitHub Discussions](https://github.com/yourusername/mangaku-api/discussions)
+- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/badruzbby/mangaku-api/issues)
+- 💡 **Feature Requests:** [GitHub Discussions](https://github.com/badruzbby/mangaku-api/discussions)
 - 📧 **Email:** badzzhaxor@gmail.com
 - 💬 **Discord:** Join our community server
 
@@ -416,7 +407,7 @@ Special thanks to all contributors and the open-source community:
 
 ### **⭐ Star History**
 
-[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/mangaku-api&type=Date)](https://star-history.com/#yourusername/mangaku-api&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=badruzbby/mangaku-api&type=Date)](https://star-history.com/#badruzbby/mangaku-api&Date)
 
 ### **🚀 Ready to Get Started?**
 
@@ -426,13 +417,13 @@ Special thanks to all contributors and the open-source community:
 <a href="http://localhost:5000/docs/">
   <img src="https://img.shields.io/badge/Try%20API-Live-blue?style=for-the-badge&logo=swagger" alt="Try API">
 </a>
-<a href="https://github.com/yourusername/mangaku-api/fork">
+<a href="https://github.com/badruzbby/mangaku-api/fork">
   <img src="https://img.shields.io/badge/Fork-Repository-yellow?style=for-the-badge&logo=github" alt="Fork Repository">
 </a>
 
 ---
 
-**Made with ❤️ by [Your Name](https://github.com/yourusername)**
+**Made with ❤️ by [Muhammad Badruz Zaman](https://github.com/badruzbby)**
 
 *If you find this project helpful, please consider giving it a ⭐!*
 
