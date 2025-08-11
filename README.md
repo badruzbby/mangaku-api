@@ -13,7 +13,7 @@
 
 *A powerful, fast, and reliable REST API for scraping manga data from Mangaaku.com with beautiful Swagger documentation*
 
-[🚀 **Live Demo**](http://localhost:5000/docs/) • [📖 **Documentation**](#-api-documentation) • [🤝 **Contributing**](#-contributing) • [💬 **Discord**](#-support)
+[🚀 **Live Demo**](http://localhost:5000/docs/) • [📖 **Documentation**](#-api-documentation) • [🤝 **Contributing**](#-contributing) • [💬 **Telegram**](#-support)
 
 </div>
 
@@ -364,8 +364,7 @@ We ❤️ contributions! Here's how you can help make Mangaku API even better:
 
 ### **Get Help & Connect**
 
-[![Discord](https://img.shields.io/badge/Discord-Join%20Server-7289da?style=for-the-badge&logo=discord)](https://discord.gg/yourdiscord)
-[![Telegram](https://img.shields.io/badge/Telegram-Join%20Chat-26a5e4?style=for-the-badge&logo=telegram)](https://t.me/yourchannel)
+[![Telegram](https://img.shields.io/badge/Telegram-Join%20Chat-26a5e4?style=for-the-badge&logo=telegram)](https://t.me/namesis93)
 [![Email](https://img.shields.io/badge/Email-Contact-ea4335?style=for-the-badge&logo=gmail)](mailto:badzzhaxor@gmail.com)
 
 </div>

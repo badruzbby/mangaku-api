@@ -7,6 +7,7 @@ WORKDIR /app
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV FLASK_ENV=production
 
 # Install system dependencies
 RUN apt-get update \
@@ -17,6 +18,7 @@ RUN apt-get update \
         libxslt-dev \
         libffi-dev \
         libssl-dev \
+        curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first to leverage Docker cache
@@ -28,6 +30,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project files
 COPY . .
 
+# Create logs directory
+RUN mkdir -p logs
+
 # Create non-root user
 RUN adduser --disabled-password --gecos '' appuser && chown -R appuser /app
 USER appuser
@@ -37,7 +42,7 @@ EXPOSE 5000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:5000/manga || exit 1
+    CMD curl -f http://localhost:5000/health || exit 1
 
 # Run the application
 CMD ["python", "app.py"] 

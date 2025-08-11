@@ -68,7 +68,7 @@ Enhancement suggestions are welcome! Please provide:
 
 ```bash
 # 1. Fork and clone the repository
-git clone https://github.com/yourusername/mangaku-api.git
+git clone https://github.com/badruzbby/mangaku-api.git
 cd mangaku-api
 
 # 2. Create virtual environment
