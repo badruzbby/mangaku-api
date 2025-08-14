@@ -22,14 +22,14 @@ def create_app(config_name=None):
     """Application factory pattern."""
     if config_name is None:
         config_name = os.environ.get('FLASK_ENV', 'default')
-    
+
     app = Flask(__name__)
     app.config.from_object(config[config_name])
-    
-    # Initialize extensions
+        
+        # Initialize extensions
     CORS(app)
-    
-    # Initialize rate limiter
+
+        # Initialize rate limiter
     limiter = Limiter(
         app=app,
         key_func=get_remote_address,
@@ -54,10 +54,19 @@ def create_app(config_name=None):
     
     # Create namespaces
     manga_ns = api.namespace('manga', description='Manga operations')
+    search_ns = api.namespace('search', description='Search operations')
     read_ns = api.namespace('read', description='Chapter reading operations')
     health_ns = api.namespace('health', description='Health check and monitoring')
     
     # Define response models
+    manga_search_model = api.model('MangaSearch', {
+        'id': fields.String(required=True, description='Unique manga identifier'),
+        'title': fields.String(required=True, description='Manga title'),
+        'image': fields.String(required=True, description='Manga cover image URL'),
+        'total_chapter': fields.Integer(required=True, description='Total number of chapters'),
+        'rating': fields.Float(required=True, description='Manga rating')
+    })
+    
     manga_model = api.model('Manga', {
         'id': fields.String(required=True, description='Unique manga identifier'),
         'title': fields.String(required=True, description='Manga title'),
@@ -107,6 +116,12 @@ def create_app(config_name=None):
     manga_list_parser.add_argument('page', type=int, default=1, help='Page number for pagination')
     manga_list_parser.add_argument('limit', type=int, default=app.config['DEFAULT_PAGE_SIZE'], 
                                  help=f'Items per page (max {app.config["MAX_PAGE_SIZE"]})')
+    
+    search_parser = reqparse.RequestParser()
+    search_parser.add_argument('query', type=str, required=True, help='Search query')
+    search_parser.add_argument('page', type=int, default=1, help='Page number for pagination')
+    search_parser.add_argument('limit', type=int, default=app.config['DEFAULT_PAGE_SIZE'], 
+                              help=f'Items per page (max {app.config["MAX_PAGE_SIZE"]})')
     
     # Performance monitoring decorator
     def monitor_performance(f):
@@ -189,10 +204,8 @@ def create_app(config_name=None):
             try:
                 mangaku = get_mangaku_instance()
                 manga_detail = mangaku.get_manga_detail(manga_url)
-                
                 if manga_detail is None:
-                    api.abort(404, "Manga not found")
-                
+                    api.abort(404, "Manga not found")  
                 return manga_detail
             except Exception as e:
                 logger.error(f"Error in get_manga_detail for {manga_url}: {str(e)}")
@@ -242,7 +255,7 @@ def create_app(config_name=None):
                     cache.get("health_check")
                 except:
                     cache_status = "unhealthy"
-                
+
                 # Check rate limiter status
                 rate_limit_status = "healthy"
                 try:
@@ -262,6 +275,36 @@ def create_app(config_name=None):
             except Exception as e:
                 logger.error(f"Health check failed: {str(e)}")
                 api.abort(503, f"Health check failed: {str(e)}")
+    
+    @search_ns.route('')
+    class SearchManga(Resource):
+        @api.doc('search_manga')
+        @api.expect(search_parser)
+        @api.marshal_list_with(manga_model)
+        @api.response(200, 'Success')
+        @api.response(429, 'Rate limit exceeded')
+        @api.response(500, 'Internal Server Error')
+        @limiter.limit("30 per minute")
+        @cache.cached(timeout=300, key_prefix=make_cache_key)
+        @monitor_performance
+        def get(self):
+            """Search manga with pagination and caching"""
+            args = search_parser.parse_args()
+            query = args['query']
+            page = args['page']
+            limit = min(args['limit'], app.config['MAX_PAGE_SIZE'])
+            
+            try:
+                mangaku = get_mangaku_instance()
+                manga_list = mangaku.search_manga(query, page, limit)
+                
+                if manga_list is None:
+                    api.abort(500, "Failed to fetch manga list")
+                
+                return manga_list
+            except Exception as e:
+                logger.error(f"Error in search_manga: {str(e)}")
+                api.abort(500, f"Internal server error: {str(e)}")
     
     @health_ns.route('/cache/clear')
     class CacheClear(Resource):

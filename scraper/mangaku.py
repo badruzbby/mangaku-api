@@ -94,7 +94,7 @@ class OptimizedMangaku:
                 response = self.session.get(
                     url,
                     timeout=(60, 180),
-                    verify=False,
+                verify=False,
                     stream=False,
                     allow_redirects=True,
                     **kwargs
@@ -134,7 +134,6 @@ class OptimizedMangaku:
             match = re.search(pattern, manga_type_text)
             if match:
                 result[key] = match.group(1).strip()
-        
         return result
     
     def get_manga_list(self, page: int = 1, limit: int = None):
@@ -329,6 +328,28 @@ class OptimizedMangaku:
         
         return year
     
+    def search_manga(self, query: str, page: int = 1, limit: int = None):
+        """Search manga with performance optimizations."""
+        url = f'{self.base_url}/page/{page}/?s={query}'
+        
+        try:
+            response = self._make_request(url)
+            soup = BeautifulSoup(response.text, 'lxml')
+            all_data = soup.find_all('div', class_="bs")
+            manga_list = []
+            try:
+                for element in all_data:
+                    manga_data = self._parse_manga_element(element)
+                    if manga_data:
+                        manga_list.append(manga_data)
+            except:
+                logger.error(f"Failed to parse manga element: {str(e)}")
+                return []
+            logger.info(f"Successfully parsed {len(manga_list)} manga items")
+            return manga_list
+        except:
+            return []
+        
     def read_manga(self, manga_url: str):
         """Get chapter images with performance optimizations."""
         url = f'{self.base_url}/{manga_url}'
@@ -398,7 +419,7 @@ class OptimizedMangaku:
         except Exception as e:
             logger.warning(f"Failed to extract images from source: {str(e)}")
             return []
-    
+        
     def get_performance_stats(self):
         """Get performance statistics."""
         return {
