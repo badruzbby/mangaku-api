@@ -11,7 +11,7 @@
 [![Stars](https://img.shields.io/github/stars/badruzbby/mangaku-api?style=social)](https://github.com/badruzbby/mangaku-api/stargazers)
 [![Forks](https://img.shields.io/github/forks/badruzbby/mangaku-api?style=social)](https://github.com/badruzbby/mangaku-api/network/members)
 
-*A production-ready, high-performance REST API for scraping manga data from Mangaaku.com with advanced caching, rate limiting, and timeout handling*
+*A high-performance REST API for scraping manga data from Mangaaku.com with advanced caching, rate limiting, and timeout handling*
 
 [🚀 **Live Demo**](http://localhost:5000/docs/) • [📖 **Documentation**](#-api-documentation) • [🤝 **Contributing**](#-contributing) • [💬 **Telegram**](https://t.me/namesis93)
 
@@ -70,7 +70,7 @@
 ### API Response Example
 *Clean, structured JSON responses with schema validation*
 
-![API Response](image/response.png)
+![API Response](image/image.png)
 
 </div>
 
